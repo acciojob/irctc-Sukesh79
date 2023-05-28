@@ -44,7 +44,7 @@ public class TrainService {
         return savedTrain.getTrainId();
     }
 
-    public Integer calculateAvailableSeats(SeatAvailabilityEntryDto seatAvailabilityEntryDto) throws Exception {
+    public Integer calculateAvailableSeats(SeatAvailabilityEntryDto seatAvailabilityEntryDto){
 
         //Calculate the total seats available
         //Suppose the route is A B C D
@@ -60,7 +60,6 @@ public class TrainService {
         Station ToStation = seatAvailabilityEntryDto.getToStation();
 
         Optional<Train> optionalTrain = trainRepository.findById(trainId);
-        if(optionalTrain.isEmpty()) throw new Exception("Train does not exist");
 
         Train train = optionalTrain.get();
 
@@ -100,7 +99,6 @@ public class TrainService {
         //throw new Exception("Train is not passing from this station");
         //  in a happy case we need to find out the number of such people.
         Optional<Train> optionalTrain = trainRepository.findById(trainId);
-        if(optionalTrain.isEmpty()) throw new Exception("Train does not exist");
 
         Train train = optionalTrain.get();
         String route = train.getRoute();
@@ -126,7 +124,6 @@ public class TrainService {
         //If there are no people travelling in that train you can return 0
 
         Optional<Train> optionalTrain = trainRepository.findById(trainId);
-        if(optionalTrain.isEmpty()) throw new Exception("Train does not exist");
 
         Train train = optionalTrain.get();
         int maxAge = Integer.MIN_VALUE;

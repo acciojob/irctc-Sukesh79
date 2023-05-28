@@ -44,7 +44,6 @@ public class TicketService {
 
         int trainId = bookTicketEntryDto.getTrainId();
         Optional<Train> optionalTrain = trainRepository.findById(trainId);
-        if(optionalTrain.isEmpty()) throw new Exception("Train does not exist");
 
         Train train = optionalTrain.get();
 
